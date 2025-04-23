@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Emotion Detector</title>
+</head>
+<body>
+    <h1>Enter Text to Detect Emotion</h1>
+    <form method="POST">
+        <textarea name="text" rows="5" cols="60"></textarea><br><br>
+        <button type="submit">Analyze</button>
+    </form>
+    {% if top_emotion %}
+        <h2>Top Emotion: {{ top_emotion }}</h2>
+        <h3>Scores:</h3>
+        <ul>
+        {% for label, score in scores %}
+            <li>{{ label }}: {{ '%.2f'|format(score * 100) }}%</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
